@@ -1,3 +1,43 @@
-<p>
-  graficas1 works!
-</p>
+<div class="row">
+    <div class="col-6">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">{{ graficos.grafico1.leyenda }}</h4>
+                <!-- Esta es la etiqueta comun y corriente sin pasar parametros al hijo -->
+                <!-- <app-mychart></app-mychart> -->
+                <!-- Aquí envío parámetros al hijo es decir al mychart.components.ts -->
+                <!-- los parametros deben ir entre corchetes para que tomen las variables 
+                    o tambien si voy a enviar numeros. Si es un string lo que envío no hace
+                    falta los corchetes-->
+                <app-mychart [doughnutChartLabels]="graficos.grafico1.labels" [doughnutChartData]="graficos.grafico1.data" doughnutChartType="doughnut" legend="leyenda"></app-mychart>
+                <!-- <app-mychart [doughnutChartLabels]="graf.labels" [doughnutChartData]="[24, 30, 46]" doughnutChartType="doughnut" legend="leyenda"></app-mychart> -->
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">{{ graficos.grafico2.leyenda }}</h4>
+                <app-mychart [doughnutChartLabels]="graficos.grafico2.labels" [doughnutChartData]="graficos.grafico2.data" doughnutChartType="doughnut" legend="leyenda"></app-mychart>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-6">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">{{ graficos.grafico3.leyenda }}</h4>
+                <app-mychart [doughnutChartLabels]="graficos.grafico3.labels" [doughnutChartData]="graficos.grafico3.data" doughnutChartType="doughnut" legend="leyenda"></app-mychart>
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">{{ graficos.grafico4.leyenda }}</h4>
+                <app-mychart [doughnutChartLabels]="graficos.grafico4.labels" [doughnutChartData]="graficos.grafico4.data" doughnutChartType="doughnut" legend="leyenda"></app-mychart>
+            </div>
+        </div>
+    </div>
+</div>
