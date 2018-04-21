@@ -15,6 +15,7 @@ import { IncrementadorComponent } from '../components/incrementador/incrementado
 import { MychartComponent } from '../components/mychart/mychart.component';
 
 import { ChartsModule } from 'ng2-charts';
+import { AccountSetingsComponent } from './account-setings/account-setings.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { ChartsModule } from 'ng2-charts';
         Graficas1Component,
         PagesComponent,
         IncrementadorComponent,
-        MychartComponent
+        MychartComponent,
+        AccountSetingsComponent
     ],
     exports: [
         DashboardComponent,
