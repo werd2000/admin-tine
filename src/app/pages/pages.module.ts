@@ -16,6 +16,8 @@ import { MychartComponent } from '../components/mychart/mychart.component';
 
 import { ChartsModule } from 'ng2-charts';
 import { AccountSetingsComponent } from './account-setings/account-setings.component';
+import { PromesasComponent } from './promesas/promesas.component';
+import { RxjsComponent } from './rxjs/rxjs.component';
 
 
 @NgModule({
@@ -26,7 +28,9 @@ import { AccountSetingsComponent } from './account-setings/account-setings.compo
         PagesComponent,
         IncrementadorComponent,
         MychartComponent,
-        AccountSetingsComponent
+        AccountSetingsComponent,
+        PromesasComponent,
+        RxjsComponent
     ],
     exports: [
         DashboardComponent,
