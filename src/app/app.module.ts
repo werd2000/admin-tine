@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms'; // temporal
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // temporal
 
 // rutas
 import { APP_ROUTES } from './app.routes';
@@ -28,6 +28,7 @@ import { RegisterComponent } from './login/register.component';
     APP_ROUTES,
     PagesModule,
     FormsModule,
+    ReactiveFormsModule,
     ServiceModule
   ],
   providers: [],
