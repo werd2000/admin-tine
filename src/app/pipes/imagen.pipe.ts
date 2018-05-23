@@ -25,10 +25,10 @@ export class ImagenPipe implements PipeTransform {
         url += '/usuarios/' + img;
       break;
       case 'profesional':
-        url += 'profesional/' + img;
+        url += '/profesionales/' + img;
       break;
-      case 'centro_medico':
-        url += 'centro_medico/' + img;
+      case 'centros_medicos':
+        url += '/centros_medicos/' + img;
       break;
       default:
       console.log('Tipo de imagen no válida. Usuario, Profesional, Centro Médico');

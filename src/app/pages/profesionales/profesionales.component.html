@@ -1,0 +1,75 @@
+<div class="row animated fadeIn">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <input #input (keyup)="buscarProfesional(input.value)" type="text" class="form-control" placeholder="Buscar médico...">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row animated fadeIn" *ngIf="cargando">
+    <div class="col-sm-12">
+        <div class="alert alert-warning text-center">
+            <strong>Cargando</strong>
+            <i class="fa fa-refresh fa-spin fa-2x"></i>
+            <span>Espere por favor</span>
+        </div>
+    </div>
+
+</div>
+
+<div class="row animated fadeIn" *ngIf="!cargando">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <div class="row">
+                    <div class="col-8">
+                        <h3 class="card-title">Centros Médicos registrados ( <small>{{ _profesionalService.totalProfesionales }}</small> )</h3>
+                    </div>
+                    <div class="col-4 text-right">
+                        <button [routerLink]="['/profesional','nuevo']" class="btn btn-info"><i class="fa fa-plus"></i> Crear Profesional</button>
+                    </div>
+                </div>
+                <table class="table table-hover table-responsive">
+                    <thead>
+                        <tr>
+                            <th>Imagen</th>
+                            <th>Nombre</th>
+                            <th>Centro Médico</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let profesional of profesionales">
+                            <td class="w70">
+                                <img (click)="mostrarModal( profesional._id)" [src]="profesional.img | imagen:'profesional'" class="img-50 img-circle pointer">
+                            </td>
+                            <td>{{ profesional.nombre }}</td>
+                            <td>{{ profesional.centroMedico.nombre }}</td>
+                            <td>
+                                <button [routerLink]="['/profesional',profesional._id]" class="btn btn-primary">
+                              <i class="fa fa-edit"></i>
+                            </button>
+                                <button (click)="borrarProfesional(profesional)" class="btn btn-danger">
+                                <i class="fa fa-trash-o"></i>
+                              </button>
+                            </td>
+                        </tr>
+                    </tbody>
+
+                </table>
+                <button (click)="cambiarDesde(-5)" class="btn btn-secondary">
+                Anterior
+              </button>
+                <button (click)="cambiarDesde(5)" class="btn btn-secondary">
+                  Siguiente
+              </button>
+
+            </div>
+        </div>
+    </div>
+</div>

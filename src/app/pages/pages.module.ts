@@ -25,6 +25,9 @@ import { ProfileComponent } from './profile/profile.component';
 import { CommonModule } from '@angular/common';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { ModalUploadComponent } from '../components/modal-upload/modal-upload.component';
+import { CentrosMedicosComponent } from './centros-medicos/centros-medicos.component';
+import { ProfesionalesComponent } from './profesionales/profesionales.component';
+import { ProfesionalComponent } from './profesionales/profesional.component';
 
 
 @NgModule({
@@ -40,7 +43,10 @@ import { ModalUploadComponent } from '../components/modal-upload/modal-upload.co
         RxjsComponent,
         ProfileComponent,
         UsuariosComponent,
-        ModalUploadComponent
+        ModalUploadComponent,
+        CentrosMedicosComponent,
+        ProfesionalesComponent,
+        ProfesionalComponent
     ],
     exports: [
         DashboardComponent,

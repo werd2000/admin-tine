@@ -39,7 +39,7 @@ export class ModalUploadComponent implements OnInit {
   }
 
   seleccionImagen( archivo: File ) {
-    console.log(event);
+    // console.log(event);
     if ( !archivo ) {
       this.imagenSubir = null;
       return;

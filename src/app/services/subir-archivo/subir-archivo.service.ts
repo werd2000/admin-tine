@@ -8,6 +8,7 @@ export class SubirArchivoService {
   constructor() { }
 
   subirArchivo( archivo: File, tipo: String, id: string) {
+    console.log(tipo);
 
     return new Promise( (resolve, reject) => {
 

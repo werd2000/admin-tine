@@ -1,0 +1,50 @@
+<div class="row animated fadeIn">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h3 class="card-title">Profesional: {{ profesional.nombre }}</h3>
+                <form #f="ngForm" ngNativeValidae (ngSubmit)="guardarProfesional(f)" class="form p-t-20">
+                    <div class="form-group">
+                        <label>Nombre del Profesional</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                            <input [(ngModel)]="profesional.nombre" name="nombre" type="text" class="form-control" placeholder="Nombre del Profesional" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Centro Médico</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-email"></i></div>
+                            <select (change)="cambioCentroMedico($event.target.value)" [(ngModel)]="profesional.centroMedico" name="centroMedico" class="form-control" required>
+                              <option value="">Seleccione un Centro Médico</option>
+                              <option *ngFor="let centro of centrosMedicos" [value]="centro._id">
+                                {{ centro.nombre }}
+                              </option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">
+                      <i class="fa fa-save"></i>
+                      Guardar</button>
+                    <a [routerLink]="['/profesionales']" class="btn btn-inverse waves-effect waves-light">Cancelar</a>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Centro Médico</h4>
+                <img [src]="centroMedico.img | imagen:'centros_medicos'" class="img-fluid rounded">
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3" *ngIf="profesional._id">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Fotografía</h4>
+                <img (click)="cambiarFoto()" [src]="profesional.img | imagen:'profesional'" class="img-fluid img-circle pointer">
+            </div>
+        </div>
+    </div>
+</div>
