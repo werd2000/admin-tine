@@ -59,9 +59,12 @@ export class ProfesionalService {
 
   cargarProfesional( id: string ) {
     const url = URL_SERVICIOS + '/profesional/' + id;
-    return this.http.get(url)
-        .map( (resp: any) => resp.profesional );
-    
+    return this.http.get( url );
+              // .map( (resp: any) => {
+              //   console.log(resp);
+
+              //   return resp.profesional;
+              // });
   }
 
 }

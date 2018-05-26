@@ -6,12 +6,13 @@ import { Graficas1Component } from './graficas1/graficas1.component';
 import { AccountSetingsComponent } from './account-setings/account-setings.component';
 import { PromesasComponent } from './promesas/promesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
-import { LoginGuardGuard } from '../services/service.index';
+import { LoginGuardGuard, AdminGuard } from '../services/service.index';
 import { ProfileComponent } from './profile/profile.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { CentrosMedicosComponent } from './centros-medicos/centros-medicos.component';
 import { ProfesionalesComponent } from './profesionales/profesionales.component';
 import { ProfesionalComponent } from './profesionales/profesional.component';
+import { BusquedaComponent } from './busqueda/busqueda.component';
 
 
 
@@ -41,8 +42,9 @@ const pagesRoutes: Routes = [
             { path: 'rxjs', component: RxjsComponent, data: { titulo: 'RxJs' }},
             { path: 'account-settings', component: AccountSetingsComponent, data: { titulo: 'Ajustes de cuenta' }},
             { path: 'perfil', component: ProfileComponent, data: { titulo: 'Perfil del usuario' }},
+            { path: 'busqueda/:termino', component: BusquedaComponent, data: { titulo: 'Buscador' }},
             // Mantenimiento
-            { path: 'usuarios', component: UsuariosComponent, data: { titulo: 'Mantenimiento de usuarios' }},
+            { path: 'usuarios', component: UsuariosComponent, canActivate: [ AdminGuard ], data: { titulo: 'Mantenimiento de usuarios' }},
             { path: 'centros-medicos', component: CentrosMedicosComponent, data: { titulo: 'Mantenimiento de Centros Médicos' }},
             { path: 'profesionales', component: ProfesionalesComponent, data: { titulo: 'Mantenimiento de Profesionales' }},
             { path: 'profesional/:id', component: ProfesionalComponent, data: { titulo: 'Actualizar Profesional' }},

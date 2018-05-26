@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { URL_SERVICIOS } from '../../config/config';
 import { HttpClient } from '@angular/common/http';
-import 'rxjs/add/operator/map';
 import { UsuarioService } from '../usuario/usuario.service';
 import { SubirArchivoService } from '../subir-archivo/subir-archivo.service';
 import { CentroMedico } from '../../models/centro-medico.model';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/observable/throw';
 
 @Injectable()
 export class CentroMedicoService {
@@ -22,7 +24,7 @@ export class CentroMedicoService {
   }
 
   cargarCentrosMedicos( desde: number = 0 ) {
-    const url = URL_SERVICIOS + '/centro_medico?desde=' + desde;
+    const url = URL_SERVICIOS + '/centromedico?desde=' + desde;
     return this.http.get( url )
           .map( (resp: any) => {
             this.totalCentrosMedicos = resp.total;
@@ -31,7 +33,7 @@ export class CentroMedicoService {
   }
 
   obtenerCentroMedico(id: string) {
-    const url = URL_SERVICIOS + '/centro_medico/' + id;
+    const url = URL_SERVICIOS + '/centromedico/' + id;
     return this.http.get(url)
           .map( (resp: any) => resp.centroMedico );
   }
@@ -43,7 +45,7 @@ export class CentroMedicoService {
   }
 
   borrarCentroMedico( id: string ) {
-    const url = URL_SERVICIOS + '/centro_medico/' + id + '?token=' + this.token;
+    const url = URL_SERVICIOS + '/centromedico/' + id + '?token=' + this.token;
     return this.http.delete (url)
           .map( resp => {
             swal('Centro médico borrado', 'El Centro Médico ha sido eliminado correctamente', 'success');
@@ -64,20 +66,28 @@ export class CentroMedicoService {
   }
 
   crearCentroMedico(	nombre: string	) {
-    const url = URL_SERVICIOS + '/centro_medico?token=' + this.token;
+    const url = URL_SERVICIOS + '/centromedico?token=' + this.token;
     return this.http.post(url, {nombre})
-            .map( (resp: any) => resp.centroMedico );
+            .map( (resp: any) => resp.centroMedico )
+            .catch( err => {
+              swal(err.error.mensaje, err.error.errors.message, 'error');
+              return Observable.throw( err );
+            });
   }
 
   // Actualiza datos del centro médico
   // recibe el obj centro medico
   actualizarCentroMedico(centro: CentroMedico) {
-    let url = URL_SERVICIOS + '/centro_medico/' + centro._id;
+    let url = URL_SERVICIOS + '/centromedico/' + centro._id;
     url += '?token=' + this.token;
     return this.http.put(url, centro)
       .map( (resp: any) => {
         swal('Centro Médico actualizado', centro.nombre, 'success');
         return resp.centroMedico;
+      })
+      .catch( err => {
+        swal(err.error.mensaje, err.error.errors.message, 'error');
+        return Observable.throw( err );
       });
   }
 

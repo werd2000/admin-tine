@@ -28,6 +28,7 @@ import { ModalUploadComponent } from '../components/modal-upload/modal-upload.co
 import { CentrosMedicosComponent } from './centros-medicos/centros-medicos.component';
 import { ProfesionalesComponent } from './profesionales/profesionales.component';
 import { ProfesionalComponent } from './profesionales/profesional.component';
+import { BusquedaComponent } from './busqueda/busqueda.component';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { ProfesionalComponent } from './profesionales/profesional.component';
         ModalUploadComponent,
         CentrosMedicosComponent,
         ProfesionalesComponent,
-        ProfesionalComponent
+        ProfesionalComponent,
+        BusquedaComponent
     ],
     exports: [
         DashboardComponent,

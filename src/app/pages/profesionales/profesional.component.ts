@@ -68,9 +68,10 @@ export class ProfesionalComponent implements OnInit {
 
   cargarProfesional( id: string ) {
     this._profesionalService.cargarProfesional(id)
-        .subscribe( (profesional: Profesional) => {
-          this.profesional = profesional;
-          this.profesional.centroMedico = profesional.centroMedico._id;
+        .subscribe( (resp: any) => {
+          this.profesional = resp.profesional;
+          this.profesional.centroMedico = resp.profesional.centroMedico._id;
+          // console.log(this.profesional.centroMedico);
           this.cambioCentroMedico(this.profesional.centroMedico);
         });
   }

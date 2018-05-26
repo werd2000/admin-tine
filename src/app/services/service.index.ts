@@ -1,3 +1,4 @@
+export { AdminGuard } from './guards/admin.guard';
 export { ProfesionalService } from './profesional/profesional.service';
 export { CentroMedicoService } from './centro-medico/centro-medico.service';
 export { ModalUploadService } from '../components/modal-upload/modal-upload.service';

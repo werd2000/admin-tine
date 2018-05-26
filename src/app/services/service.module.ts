@@ -9,7 +9,8 @@ import {
   SubirArchivoService,
   ModalUploadService,
   CentroMedicoService,
-  ProfesionalService
+  ProfesionalService,
+  AdminGuard
 } from './service.index';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -29,7 +30,8 @@ import { HttpClientModule } from '@angular/common/http';
     SubirArchivoService,
     ModalUploadService,
     CentroMedicoService,
-    ProfesionalService
+    ProfesionalService,
+    AdminGuard
   ]
 })
 export class ServiceModule { }
