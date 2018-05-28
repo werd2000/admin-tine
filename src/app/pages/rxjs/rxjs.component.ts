@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { retry } from 'rxjs/operators';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/retry';
+// import { retry } from 'rxjs/operators';
 
 @Component({
   selector: 'app-rxjs',

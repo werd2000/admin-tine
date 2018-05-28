@@ -13,44 +13,36 @@ import { CentrosMedicosComponent } from './centros-medicos/centros-medicos.compo
 import { ProfesionalesComponent } from './profesionales/profesionales.component';
 import { ProfesionalComponent } from './profesionales/profesional.component';
 import { BusquedaComponent } from './busqueda/busqueda.component';
+import { VerificaTokenGuard } from '../services/guards/verifica-token.guard';
 
 
 
 const pagesRoutes: Routes = [
-    {
-        path: '',
-        component: PagesComponent,
-        canActivate: [ LoginGuardGuard ],
-        children: [
-            { path: 'dashboard',
-                component: DashboardComponent,
-                data: {
-                    titulo: 'Dashboard',
-                    description: 'Tablero principal'
-                }},
-            { path: 'progress', component: ProgressComponent,
-                data: {
-                    titulo: 'ProgressBar',
-                    description: 'Barra de progreso'
-                }},
-            { path: 'graficas1', component: Graficas1Component, 
-                data: {
-                    titulo: 'Gráficas',
-                    description: 'Gráficos de Dona'
-                }},
-            { path: 'promesas', component: PromesasComponent, data: { titulo: 'Promesas' }},
-            { path: 'rxjs', component: RxjsComponent, data: { titulo: 'RxJs' }},
-            { path: 'account-settings', component: AccountSetingsComponent, data: { titulo: 'Ajustes de cuenta' }},
-            { path: 'perfil', component: ProfileComponent, data: { titulo: 'Perfil del usuario' }},
-            { path: 'busqueda/:termino', component: BusquedaComponent, data: { titulo: 'Buscador' }},
-            // Mantenimiento
-            { path: 'usuarios', component: UsuariosComponent, canActivate: [ AdminGuard ], data: { titulo: 'Mantenimiento de usuarios' }},
-            { path: 'centros-medicos', component: CentrosMedicosComponent, data: { titulo: 'Mantenimiento de Centros Médicos' }},
-            { path: 'profesionales', component: ProfesionalesComponent, data: { titulo: 'Mantenimiento de Profesionales' }},
-            { path: 'profesional/:id', component: ProfesionalComponent, data: { titulo: 'Actualizar Profesional' }},
-            { path: '', redirectTo: '/dashboard', pathMatch: 'full'},
-        ]
-    }
+    { path: 'dashboard', component: DashboardComponent,
+        canActivate: [ VerificaTokenGuard ],
+        data: {
+            titulo: 'Dashboard',
+            description: 'Tablero principal'
+        }},
+    { path: 'progress', component: ProgressComponent, data: {
+            titulo: 'ProgressBar',
+            description: 'Barra de progreso'
+        }},
+    { path: 'graficas1', component: Graficas1Component, data: {
+            titulo: 'Gráficas',
+            description: 'Gráficos de Dona'
+        }},
+    { path: 'promesas', component: PromesasComponent, data: { titulo: 'Promesas' }},
+    { path: 'rxjs', component: RxjsComponent, data: { titulo: 'RxJs' }},
+    { path: 'account-settings', component: AccountSetingsComponent, data: { titulo: 'Ajustes de cuenta' }},
+    { path: 'perfil', component: ProfileComponent, data: { titulo: 'Perfil del usuario' }},
+    { path: 'busqueda/:termino', component: BusquedaComponent, data: { titulo: 'Buscador' }},
+    // Mantenimientos
+    { path: 'usuarios', component: UsuariosComponent, canActivate: [ AdminGuard ], data: { titulo: 'Mantenimiento de usuarios' }},
+    { path: 'centros-medicos', component: CentrosMedicosComponent, data: { titulo: 'Mantenimiento de Centros Médicos' }},
+    { path: 'profesionales', component: ProfesionalesComponent, data: { titulo: 'Mantenimiento de Profesionales' }},
+    { path: 'profesional/:id', component: ProfesionalComponent, data: { titulo: 'Actualizar Profesional' }},
+    { path: '', redirectTo: '/dashboard', pathMatch: 'full'},
 ];
 
 export const PAGES_ROUTES = RouterModule.forChild( pagesRoutes );
